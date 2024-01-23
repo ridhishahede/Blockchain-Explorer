@@ -1,22 +1,25 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import Form from '../views/Form.vue'
+import Blockchain from '../views/Blockchain.vue'
 
 const routes = [
+  //This is the details of the file Form.vue. When the localhost loads with '/' at the end Form.vue is rendered
   {
     path: '/',
-    name: 'home',
-    component: HomeView
+    name: 'form',
+    component: Form
   },
+    //This is the details of the file Blockchain.vue. When the localhost loads with '/explorer' at the end Blockchain.vue is rendered
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+    path: '/explorer',
+    name: 'Blockchain-Explorer',
+    component: Blockchain,
+    props: true
   }
 ]
 
+//This is generated to ensure we have access to recent web history, to make sure we can move forward and backward 
+//to the pages we have visited stored temporarily in recent web history.
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
